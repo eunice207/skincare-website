@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowGuide Skincare</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f8f5ef;
+  color: #333;
+  text-align: center;
+}
+header {
+  background: #315c45;
+  color: white;
+  padding: 25px;
+}
+section { padding: 20px; }
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.product {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 180px;
+}
+button {
+  background: #315c45;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+footer {
+  background: #315c45;
+  color: white;
+  padding: 15px;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>GlowGuide Skincare</h1>
+  <p>Your journey to healthy, glowing skin!</p>
+</header>
+<section>
+  <h2>Welcome to GlowGuide</h2>
+  <p>Discover skincare products for your skin and budget.</p>
+  <h2>Our Products</h2>
+  <div class="products" id="products"></div>
+</section>
+<footer>
+  <p>Need skincare advice? Contact us today!</p>
+</footer>
+<script>
+const products = [
+  {name: "Face Cleanser", price: 4500},
+  {name: "Gel Moisturizer", price: 3500},
+  {name: "Niacinamide Serum", price: 5000},
+  {name: "Sunscreen SPF50", price: 10000}
+];
+const whatsapp = "2348101885324";
+document.getElementById("products").innerHTML =
+products.map(product => `
+  <div class="product">
+    <h3>${product.name}</h3>
+    <p>₦${product.price.toLocaleString()}</p>
+    <button onclick="order('${product.name}')">Order Now</button>
+  </div>
+`).join("");
+function order(name) {
+  window.open(
+    "https://wa.me/" + whatsapp +
+    "?text=" + encodeURIComponent("Hello, I want to order " + name)
+  );
+}
+</script>
+</body>
+</html>
